@@ -7,7 +7,7 @@ ENV CONSUL_TEMPLATE_VERSION=0.18.2 \
 
 ADD https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip /tmp/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
 
-COPY rootfs /
+#COPY rootfs /
 
 RUN set -ex && \
     apk --update add haproxy ca-certificates curl inotify-tools      && \
