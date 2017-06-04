@@ -10,14 +10,14 @@ ADD https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/co
 COPY scripts/mkimage-alpine.bash scripts/apk-install /
 
 RUN set -ex && \
-    apk --update add haproxy ca-certificates curl inotify-tools      && \
-    chmod 0751 /opt/haproxy/reload                                   && \
-    ln -s /opt/haproxy/reload /usr/local/bin/haproxy-reload          && \
-    chmod 0751 /opt/haproxy/up                                       && \
-    ln -s /opt/haproxy/up /usr/local/bin/haproxy-up                  && \
-    cd /tmp                                                          && \
-    unzip consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip && \
-    mv consul-template /usr/local/bin/consul-template                && \
+    apk --update --no-cache add haproxy ca-certificates curl inotify-tools      && \
+    chmod 0751 /opt/haproxy/reload                                              && \
+    ln -s /opt/haproxy/reload /usr/local/bin/haproxy-reload                     && \
+    chmod 0751 /opt/haproxy/up                                                  && \
+    ln -s /opt/haproxy/up /usr/local/bin/haproxy-up                             && \
+    cd /tmp                                                                     && \
+    unzip consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip            && \
+    mv consul-template /usr/local/bin/consul-template                           && \
     rm -rf /tmp/* \
            /var/cache/apk/*
 
